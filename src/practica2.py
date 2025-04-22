@@ -17,6 +17,7 @@ valor_maximo = np.max(array_3d_random)
 # Encontrar las ubicaciones de esos valores
 indice_minimo = np.argmin(array_3d_random)
 indice_maximo = np.argmax(array_3d_random)
+
 ubicacion_minimo = tuple(int(i) for i in np.unravel_index(indice_minimo, array_3d_random.shape))
 ubicacion_maximo = tuple(int(i) for i in np.unravel_index(indice_maximo, array_3d_random.shape))
 
