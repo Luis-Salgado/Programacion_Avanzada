@@ -1,7 +1,7 @@
-#1. Desarrolle un programa en Python que genere una arreglo NumPy tridimensional de tama˜ no 5×4×3 con
-#valores aleatorios entre 0 y 100. Posteriormente el programa debe encontrar el elemento m´as peque˜no
+#1. Desarrolle un programa en Python que genere una arreglo NumPy tridimensional de tamaño 5×4×3 con
+#valores aleatorios entre 0 y 100. Posteriormente el programa debe encontrar el elemento más pequeño
 #y el màs grande e indicar la ubicación de dichos elementos dentro del arreglo. Imprima la matriz, los
-#valores menor y mayor, asì como sus ubicaciones. Guarde su programa en un archivo con extensi´on .py.
+#valores menor y mayor, asì como sus ubicaciones. Guarde su programa en un archivo con extensión .py.
 
 import numpy as np
 
