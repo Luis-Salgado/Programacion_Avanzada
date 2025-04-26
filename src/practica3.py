@@ -57,6 +57,7 @@ for i in range(n):
     print("")
     print(f"El vector es: {vector}")
     print(f"    Su magnitud es: {vector.magnitud()}")
+    print(f"    El ángulo en radianes es: {vector.angulo_radianes()}")
     print(f"    El ángulo en grados es: {vector.angulo_grados()}")
    
     # Agregar el objeto Vector a la lista
