@@ -72,3 +72,18 @@ for vector in vectores[1:]:
 print("")
 print(f"La suma de los vectores {[str(v) for v in vectores]} es: {vector_resultante}")
 print("")
+
+###
+class persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Edad: {self.edad}"
+    
+class huesped:
+    
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Edad: {self.edad}"
