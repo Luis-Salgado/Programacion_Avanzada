@@ -74,16 +74,69 @@ print(f"La suma de los vectores {[str(v) for v in vectores]} es: {vector_resulta
 print("")
 
 ###
-class persona:
+class Persona:
     def __init__(self, nombre, edad):
         self.nombre = nombre
         self.edad = edad
 
-    def __str__(self):
+    @property
+    def info_persona(self):
         return f"Nombre: {self.nombre}, Edad: {self.edad}"
-    
-class huesped:
-    
 
-    def __str__(self):
-        return f"Nombre: {self.nombre}, Edad: {self.edad}"
+class Huesped(Persona):
+    def __init__(self, nombre, edad, habitacion, rfc, numero_cuenta, fecha_ingreso, hospedado_actualmente=True):
+        super().__init__(nombre, edad)
+        self.habitacion = habitacion
+        self.rfc = rfc
+        self.numero_cuenta = numero_cuenta
+        self.fecha_ingreso = fecha_ingreso
+        self.hospedado_actualmente = hospedado_actualmente
+        self.servicio_a_la_habitacion = {}
+        self.tarifa_por_noche = 500.00  # Tarifa base por noche (podría ser variable)
+
+    def mostrar_info_basica(self):
+        print(f"--- Información del Huésped ---")
+        print(f"Nombre: {self.nombre}")
+        print(f"Habitación: {self.habitacion}")
+        print(f"Fecha de Ingreso: {self.fecha_ingreso}")
+        print(f"Hospedado Actualmente: {'Sí' if self.hospedado_actualmente else 'No'}")
+
+    def agregar_servicio(self, producto, costo):
+        self.servicio_a_la_habitacion[producto] = costo
+
+    def calcular_saldo(self, fecha_actual):
+        from datetime import datetime
+
+        try:
+            fecha_ingreso_dt = datetime.strptime(self.fecha_ingreso, '%Y-%m-%d')
+            fecha_actual_dt = datetime.strptime(fecha_actual, '%Y-%m-%d')
+            dias_hospedado = (fecha_actual_dt - fecha_ingreso_dt).days
+        except ValueError:
+            print("Error: Formato de fecha incorrecto (YYYY-MM-DD).")
+            return None
+
+        costo_habitacion = dias_hospedado * self.tarifa_por_noche
+        costo_servicios = sum(self.servicio_a_la_habitacion.values())
+        saldo_total = costo_habitacion + costo_servicios
+        return saldo_total
+
+# Ejemplo de uso
+    
+huesped1 = Huesped("Ana Pérez", 35, 101, "APE350715XX9", 1234567890.12, "2025-05-01")
+huesped1.mostrar_info_basica()
+print(f"Información completa: {huesped1.info_persona}, Habitación: {huesped1.habitacion}, RFC: {huesped1.rfc}, Cuenta: {huesped1.numero_cuenta}, Ingreso: {huesped1.fecha_ingreso}, ¿Hospedado?: {huesped1.hospedado_actualmente}")
+
+huesped1.agregar_servicio("Desayuno", 80.00)
+huesped1.agregar_servicio("Lavandería", 120.50)
+
+saldo_hoy = huesped1.calcular_saldo("2025-05-03")
+if saldo_hoy is not None:
+    print(f"\nSaldo hasta el 2025-05-03: ${saldo_hoy:.2f}")
+
+huesped2 = Huesped("Carlos López", 28, 205, "CLO280120YY7", 9876543210.55, "2025-04-28", False)
+huesped2.mostrar_info_basica()
+print(f"Información completa: {huesped2.info_persona}, Habitación: {huesped2.habitacion}, RFC: {huesped2.rfc}, Cuenta: {huesped2.numero_cuenta}, Ingreso: {huesped2.fecha_ingreso}, ¿Hospedado?: {huesped2.hospedado_actualmente}")
+
+saldo_ayer = huesped2.calcular_saldo("2025-04-30")
+if saldo_ayer is not None:
+    print(f"\nSaldo hasta el 2025-04-30 para {huesped2.nombre}: ${saldo_ayer:.2f}")
