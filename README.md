@@ -1,6 +1,6 @@
 # Programacion_Avanzada
 Carpeta dedicada a los trabajos de Programación avanzada de la MTII-Anahuac.
-Las prácticas se encuentran en la rama "master"
+Las prácticas se encuentran en la rama "master", carpeta src
 
 Las prácticas se detallan a cotinuación:
 ## Practica 2
