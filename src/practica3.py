@@ -74,6 +74,12 @@ print(f"La suma de los vectores {[str(v) for v in vectores]} es: {vector_resulta
 print("")
 
 ###
+#Desarrollar un mini-sistema para el registro de huespedes de un hotel. Para ello
+#desarrolle una clase Persona que tenga los atributos nombre y edad. debe tener una
+#propiedad que muestre la información de la persona. Desarrolle además otra clase
+#llamada Huesped que se construya a partir de la clase Persona de manera que herede
+#sus propiedades y métodos.
+
 class Persona:
     def __init__(self, nombre, edad):
         self.nombre = nombre
@@ -121,22 +127,75 @@ class Huesped(Persona):
         return saldo_total
 
 # Ejemplo de uso
-    
-huesped1 = Huesped("Ana Pérez", 35, 101, "APE350715XX9", 1234567890.12, "2025-05-01")
-huesped1.mostrar_info_basica()
-print(f"Información completa: {huesped1.info_persona}, Habitación: {huesped1.habitacion}, RFC: {huesped1.rfc}, Cuenta: {huesped1.numero_cuenta}, Ingreso: {huesped1.fecha_ingreso}, ¿Hospedado?: {huesped1.hospedado_actualmente}")
+print ("Ahora pasará al mini-sistema de registro de huespedes del hotel")
+print ("")
+print ("¿Cuántos huespedes desea registrar?")
+# Solicitar el número de huéspedes al usuario
+n = int(input("Número de huéspedes: "))
+# Inicializar la lista de huéspedes
+huespedes = []
+# Bucle para solicitar la información de cada huésped
+for i in range(n):
+    print("")
+    print(f"Ingrese la información del huésped {i + 1}:")
+    nombre = input("Nombre: ")
+    edad = int(input("Edad: "))
+    habitacion = int(input("Número de habitación: "))
+    rfc = input("RFC: ")
+    numero_cuenta = float(input("Número de cuenta: "))
+    fecha_ingreso = input("Fecha de ingreso (YYYY-MM-DD): ")
+    hospedado_actualmente = input("¿Está hospedado actualmente? (Sí/No): ").strip().lower() == 'sí'
 
-huesped1.agregar_servicio("Desayuno", 80.00)
-huesped1.agregar_servicio("Lavandería", 120.50)
+    # Crear un objeto Huesped
+    huesped = Huesped(nombre, edad, habitacion, rfc, numero_cuenta, fecha_ingreso, hospedado_actualmente)
+    huespedes.append(huesped)
+    print(f"Información completa: {huesped.info_persona}, Habitación: {huesped.habitacion}, RFC: {huesped.rfc}, Cuenta: {huesped.numero_cuenta}, Ingreso: {huesped.fecha_ingreso}, ¿Hospedado?: {huesped.hospedado_actualmente}")
 
-saldo_hoy = huesped1.calcular_saldo("2025-05-03")
-if saldo_hoy is not None:
-    print(f"\nSaldo hasta el 2025-05-03: ${saldo_hoy:.2f}")
+# Ejemplo de agregar servicios y calcular saldo
 
-huesped2 = Huesped("Carlos López", 28, 205, "CLO280120YY7", 9876543210.55, "2025-04-28", False)
-huesped2.mostrar_info_basica()
-print(f"Información completa: {huesped2.info_persona}, Habitación: {huesped2.habitacion}, RFC: {huesped2.rfc}, Cuenta: {huesped2.numero_cuenta}, Ingreso: {huesped2.fecha_ingreso}, ¿Hospedado?: {huesped2.hospedado_actualmente}")
+print('desea agregar servicios a los huespedes?')
+respuesta = input("¿Si o No?: ").strip().lower()
+if respuesta == 'si':
+    for huesped in huespedes:
+        print(f"\nAgregando servicios para {huesped.nombre}:")
+        while True:
+            servicio = input("Nombre del servicio (o 'salir' para terminar): ")
+            if servicio.lower() == 'salir':
+                break
+            costo = float(input(f"Costo del servicio '{servicio}': "))
+            huesped.agregar_servicio(servicio, costo)
+        print(f"Servicios agregados para {huesped.nombre}: {huesped.servicio_a_la_habitacion}")
+else:
+    print("No se agregarán servicios.")
+# Ejemplo de cálculo de saldo
+print('desea agregar servicios a los huespedes?')
+respuesta = input("¿Si o No?: ").strip().lower()
+if respuesta == 'si':
+    for huesped in huespedes:
+        print(f"\nAgregando servicios para {huesped.nombre}:")
+        while True:
+            servicio = input("Nombre del servicio (o 'salir' para terminar): ")
+            if servicio.lower() == 'salir':
+                break
+            costo = float(input(f"Costo del servicio '{servicio}': "))
+            huesped.agregar_servicio(servicio, costo)
+        print(f"Servicios agregados para {huesped.nombre}: {huesped.servicio_a_la_habitacion}")
+        print(f"Saldo total para {huesped.nombre}: {huesped.calcular_saldo('today')}")
+        
+else:
+    print("No se agregarán servicios.")
 
-saldo_ayer = huesped2.calcular_saldo("2025-04-30")
-if saldo_ayer is not None:
-    print(f"\nSaldo hasta el 2025-04-30 para {huesped2.nombre}: ${saldo_ayer:.2f}")
+#Calcular saldo
+print('desea calcular el saldo de los huespedes?')
+respuesta = input("¿Si o No?: ").strip().lower()
+if respuesta == 'si':
+    fecha_actual = input("Ingrese la fecha actual (YYYY-MM-DD): ")
+    for huesped in huespedes:
+        saldo = huesped.calcular_saldo(fecha_actual)
+        if saldo is not None:
+            print(f"Saldo total para {huesped.nombre}: {saldo}")
+else:
+    print("No se calculará el saldo.")
+print("")
+print("Fin del programa")
+print("")
