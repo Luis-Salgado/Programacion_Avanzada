@@ -39,3 +39,17 @@ En esta práctica se desarrollan dos secciones de código,
 a) En la primer sección se realiza la comparación de dos rectangulos utilizando los métodos mágicos __init__, __eq__, __ne__, __gt__ y __lt__. Se realiza la comparación de sus lados y se informa el resultado.
 
 b) La segunda donde se Desarrolla un mini-sistema para la visualización de una playlist y adición de canciones. Se utilizan los métodos __init__, __len__, __getitem__ y __set__item__. Se desarrolla un diccionario que almacena las canciones y através de los métodos se realiza la visualización del contenido de la playlist y su actualización.
+
+## Practica 5 - Programación Funcional
+Desarrollo de tres ejercicios con las funciones map, filter, reduce y lambda
+a) Dada una lista de números enteros cualquiera, utilice los métodos map, filter y reduce
+para filtrar los números impares de la lista y calcular la suma de sus cuadrados.
+
+b) Dada una lista de diccionarios que representan productos con nombre (llave en el
+diccionario) y precio (valor de la llave en el diccionario), filtre los productos que
+cuestan más de $200, y aplique un descuento del 10%. Finalmente calcule el total de los
+productos que tienen descuento.
+
+c) Existe un método llamado mínimos cuadrados que en su caso lineal permite obtener
+una línea recta que se aproxima a una serie de m puntos (x, y). La recta resultante
+del método es y = a0 + a1 x, y para calcular los coeficientes a0 y a1. Utilizar map, filter, reduce y lambda para resolverlo.
