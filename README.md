@@ -53,3 +53,25 @@ productos que tienen descuento.
 c) Existe un método llamado mínimos cuadrados que en su caso lineal permite obtener
 una línea recta que se aproxima a una serie de m puntos (x, y). La recta resultante
 del método es y = a0 + a1 x, y para calcular los coeficientes a0 y a1. Utilizar map, filter, reduce y lambda para resolverlo.
+
+## Practica 6 - Listas por comprensión
+Desarrollo de los siguientes ejercicios:
+1. Dadas dos listas de números, por ejemplo [1, 2, 3] y [4, 5, 6], genera una
+nueva lista que contenga el producto de los elementos correspondientes.
+
+3. Dada una lista de diccionarios que representan personas con claves “nombre”, “edad” y
+“ciudad”, genera una nueva lista de nombres de personas que tengan más de 30 años y vivan en
+“Madrid”.
+Ejemplo: Para la lista [{"nombre":
+"Ana", "edad": 25, "ciudad":
+"Madrid"}, {"nombre": "Juan", "edad": 35, "ciudad": "Madrid"},
+{"nombre": "Luis", "edad": 32, "ciudad": "Barcelona"}], el resultado
+debería ser [“Juan”].
+
+5. Dada una lista de listas de números, utiliza una expresión generadora para calcular la
+media de todos los números.
+Ejemplo: Para la lista [[1, 2, 3], [4, 5], [6, 7, 8]], el resultado debería ser 4.5.
+
+7. Utiliza una expresión generadora para calcular la varianza de una lista de números. La
+varianza se calcula como la media de los cuadrados de las diferencias con la media.
+Ejemplo: Para la lista [1, 2, 3, 4, 5], el resultado debería ser 2.0.
